@@ -48,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'job_provider' => [
+            'driver' => 'session',
+            'provider' => 'job_providers',
+        ],
     ],
 
     /*
@@ -75,6 +79,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'job_providers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\JobProvider::class,
         ],
 
         // 'users' => [

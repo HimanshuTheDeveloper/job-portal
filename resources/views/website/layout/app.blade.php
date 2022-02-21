@@ -34,7 +34,9 @@
   </head>
   <body>
 
-    <div class="loader"></div>
+    <div class="spinner-border text-secondary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
     <div id="app">
       <div class="main-wrapper main-wrapper-1">
   
