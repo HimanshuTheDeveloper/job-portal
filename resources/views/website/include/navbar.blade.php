@@ -23,6 +23,7 @@
         <li><a href="single.html">single</a></li>
             </ul>
           </li>
+          <li><a class="ticker-btn" href="{{route('job_provider.register')}}">Login as Provider</a></li>
           <li><a class="ticker-btn" href="{{route('user.register')}}">Signup</a></li>
           <li><a class="ticker-btn" href="{{route('user.login')}}">Login</a></li>				          				          
         </ul>

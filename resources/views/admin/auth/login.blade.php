@@ -17,6 +17,20 @@
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
   <link rel='shortcut icon' type='image/x-icon' href="{{asset('assets/img/coffee.png')}}" />
+
+         <!-- Toast CSS -->
+         <link rel="stylesheet" href="{{asset('assets/css/toast.css')}}">
+         <link rel="stylesheet" href="{{asset('assets/css/confirm.css')}}">
+  <style>
+      #load {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 9999;
+            background:url("{{asset('assets/img/loder.gif')}}") no-repeat center center rgba(0, 0, 0, 0.25);
+            background-size: 150px 150px;
+        }
+  </style>
 </head>
 
 <body>
@@ -101,7 +115,31 @@
   <!-- Custom JS File -->
   <script src="{{asset('assets/js/custom.js')}}"></script>
 
+
+   {{-- for toast notification --}}
+   <script src="{{asset('assets/js/toast.js')}}"></script>
+   <script src="{{asset('assets/js/toastDemo.js')}}"></script>
+
   <script>
+
+$('#load').hide();
+var options = {
+        autoClose: true,
+        progressBar: true,
+        enableSounds: true,
+        sounds: {
+            info: "{{asset('assets/info.mp3')}}",
+// path to sound for successfull message:
+            success: "{{asset('assets/success.mp3')}}",
+// path to sound for warn message:
+            warning: "{{asset('assets/warning.mp3')}}",
+// path to sound for error message:
+            error: "{{asset('assets/error.mp3')}}",
+        },
+    };
+    var toast = new Toasty(options);
+    toast.configure(options);
+
 
     $(function () {
         $('#admin-login').on('submit', function(e){
@@ -120,16 +158,19 @@
                 beforeSend: function () {
                 },
                 success:function(result){
+
+                  console.log(result.status);
                     if(result.status)
                     {
+                      toast.success(result.msg);
                         setTimeout(function(){
                             window.location.href = result.location;
                         }, 500);
                     }
                     else
                     {
-                      alert('error');
-                      // toast.error(result.msg);
+                     
+                      toast.error(result.msg);
                     }
                 },
                 complete: function () {

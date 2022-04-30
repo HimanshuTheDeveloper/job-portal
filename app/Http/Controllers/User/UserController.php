@@ -51,7 +51,7 @@ class UserController extends Controller
             if($created)
             {
                 if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                        return json_encode(['status' => true, 'msg' => "Success, Welcome Back!", 'location' => url('').'/user/dashboard']);
+                        return json_encode(['status' => true, 'msg' => "Success, Welcome Back!", 'location' => url('').'/']);
                         exit;
                 } else {
                     return response()->json(array('status' => false, 'msg' => "Credentials not matched !"));
@@ -80,7 +80,7 @@ class UserController extends Controller
         else{
             
             if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                    return json_encode(['status' => true, 'msg' => "Success, Welcome Back!", 'location' => url('').'/user/dashboard']);
+                    return json_encode(['status' => true, 'msg' => "Success, Welcome Back!", 'location' => url('').'/']);
                     exit;
             } else {
                 return response()->json(array('status' => false, 'msg' => "Credentials not matched !"));

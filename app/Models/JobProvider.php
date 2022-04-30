@@ -9,4 +9,10 @@ class JobProvider extends Model
 {
     use HasFactory;
     protected $guard = 'job_providers';
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
 }

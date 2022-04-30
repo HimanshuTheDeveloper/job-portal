@@ -12,6 +12,13 @@ Route::middleware(['admin_middleware'])->group(function () {
     route::get('dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
     route::get('logout',[AdminController::class,'logout'])->name('admin.logout');
     route::get('profile',[ProfileController::class,'profile'])->name('admin.profile');
+    
+    
+    // Add Area Route
+    route::get('area',[AdminController::class,'index'])->name('admin.area');
+
+
+    // Add Category Route
 });
 
 ?>

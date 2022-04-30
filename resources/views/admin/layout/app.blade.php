@@ -21,6 +21,9 @@
       <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
       <link rel='shortcut icon' type='image/x-icon' href="{{asset('assets/img/coffee.png')}}" />
 
+      {{-- confirm and  toast csss --}}
+      <link rel="stylesheet" href="{{asset('assets/css/toast.css')}}">
+      <link rel="stylesheet" href="{{asset('assets/css/confirm.css')}}">
 {{-- Extra Css --}}
   @yield('extra_css')
 </head>
@@ -62,6 +65,31 @@
   <!-- Custom JS File -->
   <script src="{{asset('assets/js/custom.js')}}"></script>
 
+   {{-- for toast notification --}}
+   <script src="{{asset('assets/js/confirm.js')}}"></script>
+   <script src="{{asset('assets/js/toast.js')}}"></script>
+   <script src="{{asset('assets/js/toastDemo.js')}}"></script>
+
+
+   <script>
+    $('#load').hide();
+  var options = {
+     autoClose: true,
+     progressBar: true,
+     enableSounds: true,
+     sounds: {
+         info: "{{asset('assets/info.mp3')}}",
+// path to sound for successfull message:
+         success: "{{asset('assets/success.mp3')}}",
+// path to sound for warn message:
+         warning: "{{asset('assets/warning.mp3')}}",
+// path to sound for error message:
+         error: "{{asset('assets/error.mp3')}}",
+     },
+ };
+ var toast = new Toasty(options);
+ toast.configure(options);
+ </script>
   {{-- Extra js --}}
   @yield('extra_js')
 </body>

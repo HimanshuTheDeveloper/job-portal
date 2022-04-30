@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\provider;
 
 use App\Http\Controllers\Controller;
+use App\Models\JobProvider;
 use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Validator;
 
 class ProviderController extends Controller
 {
@@ -13,19 +16,19 @@ class ProviderController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        return view('provider.dashboard');
     }
     
     public function register()
     {
-        return view('user.auth.register');
+        return view('provider.auth.register');
     }
     public function login()
     {
-        return view('user.auth.login');
+        return view('provider.auth.login');
     }
 
-    public function userRegistered(Request $request)
+    public function providerRegistered(Request $request)
     {
         
         $rules = [
@@ -38,15 +41,15 @@ class ProviderController extends Controller
             return response()->json(array('result' => false, 'msg' => $validator->errors()->first()));
         }
         else{
-            $user= new User();
-            $user->name         =   $request['first_name'] .' '.  $request['last_name'];
-            $user->email        =   $request['email'];
-            $user->password     =   Hash::make($request['password']);
-            $created = $user->save();
+            $provider= new JobProvider();
+            $provider->name         =   $request['first_name'] .' '.  $request['last_name'];
+            $provider->email        =   $request['email'];
+            $provider->password     =   Hash::make($request['password']);
+            $created = $provider->save();
             if($created)
             {
-                if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                        return json_encode(['status' => true, 'msg' => "Success, Welcome Back!", 'location' => url('').'/user/dashboard']);
+                if (Auth::guard('job_provider')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                        return json_encode(['status' => true, 'msg' => "Success, Welcome Back!", 'location' => url('').'/provider/dashboard']);
                         exit;
                 } else {
                     return response()->json(array('status' => false, 'msg' => "Credentials not matched !"));
@@ -74,8 +77,8 @@ class ProviderController extends Controller
         }
         else{
             
-            if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                    return json_encode(['status' => true, 'msg' => "Success, Welcome Back!", 'location' => url('').'/user/dashboard']);
+            if (Auth::guard('job_provider')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                    return json_encode(['status' => true, 'msg' => "Success, Welcome Back!", 'location' => url('').'/provider/dashboard']);
                     exit;
             } else {
                 return response()->json(array('status' => false, 'msg' => "Credentials not matched !"));

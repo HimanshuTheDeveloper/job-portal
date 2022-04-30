@@ -18,6 +18,13 @@
             <li><a class="nav-link" href="widget-data.html">Data Widgets</a></li>
           </ul>
         </li>
+
+         <li class="">
+          <a href="#" class="menu-toggle nav-link"><i data-feather="command"></i><span>Add Area</span></a>
+        </li>
+         <li class="">
+          <a href="#" class="menu-toggle nav-link"><i data-feather="copy"></i><span>Add Job Category</span></a>
+        </li>
         {{-- <li class="dropdown">
           <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Apps</span></a>
           <ul class="dropdown-menu">
@@ -28,7 +35,7 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Email</span></a>
+          <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Email</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="email-inbox.html">Inbox</a></li>
             <li><a class="nav-link" href="email-compose.html">Compose</a></li>

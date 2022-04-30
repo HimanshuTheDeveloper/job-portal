@@ -30,14 +30,12 @@ class AdminController extends Controller
             'password' => 'required|min:6'
         ];
         $validator = Validator::make($request->all(), $rules);
-
         if ($validator->fails()) {
             return response()->json(array('result' => false, 'msg' => $validator->errors()->first()));
         }
         else{
             
             if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-                
                     return json_encode(['status' => true, 'msg' => "Success, Welcome Back!", 'location' => url('').'/admin/dashboard']);
                 exit;
             } else {
